@@ -42,6 +42,7 @@ def toggle_offcanvas1(n1, n2, is_open):
     return True
 
 
+# delete
 @app.callback(Output('main-table', 'data'),
               [Input('button-item-2', 'n_clicks'), Input('button-item-3', 'n_clicks')])
 @dec
@@ -63,17 +64,57 @@ def update_graphs(n2, n3):
     return [{"name": "", "id": ""}, ]
 
 
-# @app.callback(
-#     [Output('spent-money', 'children'),
-#     Output('have-money', 'children'),
-#     Output('can-spend', 'children')],
-#     [Input('button-item-1', 'n_clicks')]
-# )
-# def calculate_spending(n):
-#     ctx = dash.callback_context
-#     dropdown_id = ctx.triggered[0]['prop_id'].split('.')[0]
-#     if dropdown_id == "button-item-1":
-#         return '1', '2', '3'
+@app.callback(
+    Output('demo-dropdown', 'data'),
+    [Input('button-item-3', 'n_clicks'), Input('button-item-3', 'n_clicks')]
+)
+@dec
+def dropdown_catorories():
+    options = [
+                  {'label': 'New York City', 'value': 'NYC'},
+                  {'label': 'Montreal', 'value': 'MTL'},
+                  {'label': 'San Francisco', 'value': 'SF'},
+              ],
+
+    return options
+
+
+@app.callback(
+    [Output('spent-money', 'children'),
+    Output('have-money', 'children'),
+    Output('can-spend', 'children')],
+    [Input('button-item-1', 'n_clicks'),]
+)
+@dec
+def get_spending_money(_):
+    return "33", 55, 66
+
+
+@app.callback(
+    [Output('dropdown-categories', 'options'),
+    Output('dropdown-categories', 'placeholder')],
+    [Input('button-item-1', 'n_clicks'),]
+)
+@dec
+def get_dropdown_categories(r):
+    options = [
+                  {'label': 'New York City', 'value': 'NYC'},
+                  {'label': 'Montreal', 'value': 'MTL'},
+                  {'label': 'San Francisco', 'value': 'SF'},
+              ]
+    return options, 'Choose category'
+
+
+@app.callback(
+    [Output('button-add', 'options')],
+    [Input('button-add', 'n_clicks'),
+    Input('input-money', 'value'),
+    Input('dropdown-categories', 'value')]
+)
+@dec
+def adding_spending(a, b, c):
+
+    return ('sd',)
 
 
 @app.callback(
@@ -83,16 +124,15 @@ def update_graphs(n2, n3):
      ],
 )
 @dec
-def change_page(n1, n2):
+def change_page(_, __):
     ctx = dash.callback_context
     button_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
     if button_id == "button-item-1":
-        return (table2,)
+        return ([spending_money, add_spending],)
     elif button_id == "button-item-2":
         return ('TEST BUTT 2',)
     return ('sdf',)
-
 
 
 # ____________________________________________________________________________________________________

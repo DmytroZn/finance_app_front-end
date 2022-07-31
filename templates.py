@@ -6,21 +6,17 @@ PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
 ###########################################################################
 
+content = html.Div(id='content')
+
 
 sidebar = html.Div(
     [
         dbc.Offcanvas(
                 dbc.ListGroup(
                     [
-                        dbc.ListGroupItem(
-                            "Button", id="button-item-1", n_clicks=0, action=True
-                        ),
-                        dbc.ListGroupItem(
-                            "Button-2", id="button-item-2", n_clicks=0, action=True
-                        ),
-                        dbc.ListGroupItem(
-                            "Button-3", id="button-item-3", n_clicks=0, action=True
-                        ),
+                        dbc.ListGroupItem("Main page", id="button-item-1", n_clicks=0, action=True),
+                        dbc.ListGroupItem("Category", id="button-item-2", n_clicks=0, action=True),
+                        dbc.ListGroupItem("Settings", id="button-item-3", n_clicks=0, action=True),
                     ]
                 ),
             id="offcanvas",
@@ -31,6 +27,7 @@ sidebar = html.Div(
         ),
     ]
 )
+
 
 navbar = dbc.Navbar(
     dbc.Container(
@@ -56,15 +53,13 @@ navbar = dbc.Navbar(
     dark=True,
 )
 
-content = html.Div(id='content')
 
 table = dbc.Container([
     dash_table.DataTable(id='main-table')
 ])
 
 
-
-table2 = html.Center([
+spending_money = html.Center([
     html.Table([
         html.Tbody([
             html.Tr([
@@ -80,5 +75,18 @@ table2 = html.Center([
     ])
 ])
 
-# main = html.Div([navbar, sidebar, content, table2, table])
+
+
+add_spending = html.Center(html.Table([
+    html.Tbody([
+        html.Tr([
+            (dbc.Input(id="input-money", value='sdf', placeholder="", type="number", min=0, max=15_000_000, style={'width': '150px'})),
+            html.Td(dcc.Dropdown(id='dropdown-categories', style={'width': '155px'})),
+        ]),
+       dbc.Button("Submit", id='button-add', n_clicks=0, color="primary")
+    ], ),
+]))
+
+
+
 main = html.Div([navbar, sidebar, content])
