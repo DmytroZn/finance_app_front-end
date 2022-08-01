@@ -60,6 +60,7 @@ table = dbc.Container([
 
 
 spending_money = html.Center([
+    html.Br(),
     html.Table([
         html.Tbody([
             html.Tr([
@@ -77,15 +78,22 @@ spending_money = html.Center([
 
 
 
-add_spending = html.Center(html.Table([
-    html.Tbody([
-        html.Tr([
-            (dbc.Input(id="input-money", value='sdf', placeholder="", type="number", min=0, max=15_000_000, style={'width': '150px'})),
-            html.Td(dcc.Dropdown(id='dropdown-categories', style={'width': '155px'})),
+add_spending = html.Div([
+    html.Center([
+        html.Table([
+            html.Tbody([
+                html.Tr([
+                    (dbc.Input(id="input-money", value='sdf', placeholder="", type="number", min=0, max=15_000_000, style={'width': '150px'})),
+                    html.Td(dcc.Dropdown(id='dropdown-categories', style={'width': '155px'})),
+                ]),
+            ]),
         ]),
-       dbc.Button("Submit", id='button-add', n_clicks=0, color="primary")
-    ], ),
-]))
+        html.Br(),
+        dbc.Container(dbc.Textarea(id="textarea-comment", rows=2, style={'width': '300px'})),
+    ]),
+    html.Center(dbc.Button("Submit", id='button-add', n_clicks=0, color="primary"), style={"display": "right"})
+
+])
 
 
 

@@ -17,10 +17,11 @@ def dec(func):
     def wrap(*args, **kwargs):
         print(args, kwargs)
         return func(*args, **kwargs)
+
     return wrap
 
-# ____________________________________________________________________________________________________
 
+# ____________________________________________________________________________________________________
 
 
 app.layout = main
@@ -51,9 +52,9 @@ def update_graphs(n2, n3):
     dropdown_id = ctx.triggered[0]['prop_id'].split('.')[0]
 
     d2 = [{"name": "sdf", "id": "sdfsf"},
-         {"name": "sdf", "id": "sdfsf"},
-         {"name": "sdf", "id": "sdfsf"},
-         {"name": "sdf", "id": "sdfsf"}, ]
+          {"name": "sdf", "id": "sdfsf"},
+          {"name": "sdf", "id": "sdfsf"},
+          {"name": "sdf", "id": "sdfsf"}, ]
 
     d3 = [{"name": "sdf", "id": "sdfsf"}, ]
 
@@ -81,9 +82,9 @@ def dropdown_catorories():
 
 @app.callback(
     [Output('spent-money', 'children'),
-    Output('have-money', 'children'),
-    Output('can-spend', 'children')],
-    [Input('button-item-1', 'n_clicks'),]
+     Output('have-money', 'children'),
+     Output('can-spend', 'children')],
+    [Input('button-item-1', 'n_clicks'), ]
 )
 @dec
 def get_spending_money(_):
@@ -92,35 +93,35 @@ def get_spending_money(_):
 
 @app.callback(
     [Output('dropdown-categories', 'options'),
-    Output('dropdown-categories', 'placeholder')],
-    [Input('button-item-1', 'n_clicks'),]
+     Output('dropdown-categories', 'placeholder')],
+    [Input('button-item-1', 'n_clicks'), ]
 )
 @dec
 def get_dropdown_categories(r):
     options = [
-                  {'label': 'New York City', 'value': 'NYC'},
-                  {'label': 'Montreal', 'value': 'MTL'},
-                  {'label': 'San Francisco', 'value': 'SF'},
-              ]
+        {'label': 'New York City', 'value': 'NYC'},
+        {'label': 'Montreal', 'value': 'MTL'},
+        {'label': 'San Francisco', 'value': 'SF'},
+    ]
     return options, 'Choose category'
 
 
 @app.callback(
     [Output('button-add', 'options')],
-    [Input('button-add', 'n_clicks'),
-    Input('input-money', 'value'),
-    Input('dropdown-categories', 'value')]
+    [Input('button-add', 'n_clicks'), ],
+    [State('input-money', 'value'),
+     State('dropdown-categories', 'value'),
+     State('textarea-comment', 'value')]
 )
 @dec
-def adding_spending(a, b, c):
-
+def adding_spending(a, b, c, d):
     return ('sd',)
 
 
 @app.callback(
     [Output('content', 'children')],
     [Input('button-item-1', 'n_clicks'),
-    Input('button-item-2', 'n_clicks')
+     Input('button-item-2', 'n_clicks')
      ],
 )
 @dec
