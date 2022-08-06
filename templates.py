@@ -137,7 +137,7 @@ sing_in = html.Center(html.Div(
         html.Br(),
         dbc.Row(
             dbc.Col(
-                dbc.Button("Singin", id='button-sing-in', n_clicks=0, href='/sd', color="primary"),
+                dbc.Button("Singin", id='button-sing-in', n_clicks=0, color="primary"),
             )
         ),
         html.Br(),

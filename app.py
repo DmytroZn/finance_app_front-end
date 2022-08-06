@@ -76,7 +76,6 @@ app.layout = main
 
      Input('button-item-1', 'n_clicks'),
      Input('button-item-2', 'n_clicks'),
-    # Input('button-sing-in', 'n_clicks'),
 
     ]
 )
@@ -119,23 +118,17 @@ def start_page(value, b, c, d):
 
 
 @app.callback(
-    Output('page-content', 'children'),
+    Output('button-sing-in', 'n_click'),
     Input('button-sing-in', 'n_clicks'),
     [State('input-username-sing-in', 'value'),
      State('input-password-sing-in', 'value')]
 
 )
 def sign_in(a, b, c):
+    print('done')
     session['token'] = b
     return ''
 
-@app.callback(
-    Output('content3', 'children'),
-    Input('button-singup-page', 'n_clicks')
-)
-def tt():
-    print('test')
-    return
 
 
 @app.callback(
