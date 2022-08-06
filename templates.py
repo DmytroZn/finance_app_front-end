@@ -58,102 +58,54 @@ table = dbc.Container([
     dash_table.DataTable(id='main-table')
 ])
 
-
-# spending_money = html.Center([
-#     html.Br(),
-#     html.Table([
-#         html.Tbody([
-#             html.Tr([
-#                 html.P('You have spent money already: '), html.Td(html.P(children="9 000", id='spent-money')),
-#             ]),
-#             html.Tr([
-#                 html.P('You have money for spending: '), html.Td(html.P("6 000", id='have-money')),
-#             ]),
-#             html.Tr([
-#                 html.P("You can spend today: "), html.Td(html.P("676,98", id='can-spend'))
-#             ])
-#         ])
-#     ])
-# ])
-
 spending_money = html.Center(html.Div(
     [
         html.Br(),
         dbc.Row(
             [
                 dbc.Col([html.P('You have spent money already: '), html.P(children="9 000", id='spent-money')] ),
-                # dbc.Col([html.P(children="9 000", id='spent-money')] ),
             ]
         ),
 
         dbc.Row(
             [
                 dbc.Col([html.P('You have money for spending: '), html.P("6 000", id='have-money')] ),
-                # dbc.Col([html.P("6 000", id='have-money')] ),
             ]
         ),
 
         dbc.Row(
             [
                 dbc.Col([html.P('You can spend today: '), html.P("676,98", id='can-spend')] ),
-                # dbc.Col([html.P("676,98", id='can-spend')] ),
             ]
         ),
 
     ], style={'padding-right': '1em'}
 ))
 
-
-
-# add_spending = html.Div([
-#     html.Center([
-#         html.Table([
-#             html.Tbody([
-#                 html.Tr([
-#                     (dbc.Input(id="input-money", value='sdf', placeholder="", type="number", min=0, max=15_000_000, style={'width': '150px'})),
-#                     html.Td(dcc.Dropdown(id='dropdown-categories', style={'width': '155px'})),
-#                 ]),
-#             ]),
-#         ]),
-#         html.Br(),
-#         dbc.Container(dbc.Textarea(id="textarea-comment", rows=2, style={'width': '300px'})),
-#     ]),
-#     html.Center(dbc.Button("Submit", id='button-add', n_clicks=0, color="primary"), style={"display": "right"})
-#
-# ])
-
 add_spending = html.Center(html.Div(
     [
         dbc.Row(
-            html.Center(
-                dbc.Col(
-                    dbc.Input(id="input-money", value='sdf', placeholder="", type="number", min=0, max=15_000_000,
-                              style={'width': '150px'}),
-                ),
+            dbc.Col(
+                dbc.Input(id="input-money", placeholder="", type="number", min=0, max=15_000_000,
+                          style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dcc.Dropdown(id='dropdown-categories', style={'width': '155px', 'text-align': 'center'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Textarea(id="textarea-comment", rows=2, style={'width': '300px'}),
             )
         ),
         html.Br(),
         dbc.Row(
-            html.Center(
-                dbc.Col(
-                    dcc.Dropdown(id='dropdown-categories', style={'width': '155px', 'text-align': 'center'}),
-                ),
-            )
-        ),
-        html.Br(),
-        dbc.Row(
-            html.Center(
-                dbc.Col(
-                    dbc.Textarea(id="textarea-comment", rows=2, style={'width': '300px'}),
-                )
-            )
-        ),
-        html.Br(),
-        dbc.Row(
-            html.Center(
-                dbc.Col(
-                    dbc.Button("Submit", id='button-add', n_clicks=0, color="primary"),
-                )
+            dbc.Col(
+                dbc.Button("Submit", id='button-add', n_clicks=0, color="primary"),
             )
         ),
         html.Br(),
@@ -161,5 +113,80 @@ add_spending = html.Center(html.Div(
 ))
 
 
+sing_in = html.Center(html.Div(
+    [
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-username-sing-in", placeholder="username", type="text", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-password-sing-in", placeholder="password", type="password", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Button("Singin", id='button-sing-in', n_clicks=0, color="primary"),
+            )
+        ),
+        html.Br(),
 
-main = html.Div([navbar, sidebar, content])
+    ]
+))
+
+
+sing_up = html.Center(html.Div(
+    [
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-username-sing-up", placeholder="username", type="text", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-firstname", placeholder="First name", type="text", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-lastname", placeholder="Last name", type="text", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-email", placeholder="Email", type="email", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-password-sing-up", placeholder="password", type="password", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Input(id="input-re-password-sing-up", placeholder="again password", type="password", style={'width': '150px'}),
+            ),
+        ),
+        html.Br(),
+        dbc.Row(
+            dbc.Col(
+                dbc.Button("Singup", id='button-sing-up', n_clicks=0, color="primary"),
+            )
+        ),
+        html.Br(),
+
+    ]
+))
+
+
+main = html.Div([navbar, sidebar, content, sing_up])
