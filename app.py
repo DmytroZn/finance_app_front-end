@@ -126,7 +126,8 @@ def start_page(value, b, c, d):
 )
 def sign_in(a, b, c):
     print('done')
-    session['token'] = b
+    if b =='dima' and c:
+        session['token'] = b
     return ''
 
 
